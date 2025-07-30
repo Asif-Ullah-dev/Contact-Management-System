@@ -106,7 +106,6 @@ python app.py
 - 🧑‍💼 User login & registration system  
 - 📊 Fully working charts dashboard  
 - 🧾 PDF report generation  
-- 🌐 Deployment on Render or PythonAnywhere
 
 ---
 
