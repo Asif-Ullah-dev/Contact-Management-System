@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact CRM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="crm-body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <h2>📇 CMS</h2>
+        </div>
+        <nav>
+            <ul>
+    <li><a href="{{ url_for('index') }}">👥 Contacts</a></li>
+    <li><a href="{{ url_for('deals') }}">📊 Deals</a></li>
+    <li><a href="{{ url_for('accounts') }}">🏢 Accounts</a></li>
+    <li><a href="{{ url_for('leads') }}">📈 Leads</a></li>
+    <li><a href="{{ url_for('dashboard') }}">📁 Dashboard</a></li>
+</ul>
+
+        </nav>
+    </div>
+    <div class="toggle-container">
+    <label class="toggle-label">Dark Mode</label>
+    <label class="switch">
+        <input type="checkbox" id="darkToggle">
+        <span class="slider"></span>
+    </label>
+</div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+<script>
+    const darkToggle = document.getElementById('darkToggle');
+    const body = document.body;
+
+    // Load saved preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+        darkToggle.checked = true;
+    }
+
+    darkToggle?.addEventListener('change', () => {
+        if (darkToggle.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
+</script>
+
+
+</body>
+</html>

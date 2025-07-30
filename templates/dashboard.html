@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>📊 Dashboard</h2>
+
+<div class="dashboard-stats">
+  <div class="stat-box">Total Contacts: {{ contacts|length }}</div>
+  <div class="stat-box">Total Deals: {{ deals|length if deals else 0 }}</div>
+  <div class="stat-box">Total Leads: {{ leads|length if leads else 0 }}</div>
+</div>
+
+<canvas id="priorityChart" height="120"></canvas>
+<canvas id="leadChart" height="120" style="margin-top: 40px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx1 = document.getElementById('priorityChart').getContext('2d');
+  const ctx2 = document.getElementById('leadChart').getContext('2d');
+
+  new Chart(ctx1, {
+    type: 'pie',
+    data: {
+      labels: ['High', 'Medium', 'Low'],
+      datasets: [{
+        label: 'Contact Priority',
+        data: [4, 3, 3], // Replace dynamically if needed
+        backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
+      }]
+    }
+  });
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Website', 'Referral', 'Social Media'],
+      datasets: [{
+        label: 'Lead Sources',
+        data: [4, 2, 3], // Replace dynamically if needed
+        backgroundColor: ['#3498db', '#9b59b6', '#1abc9c']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="glow-section" id="main-body">
+
+    <!-- Optional Dark Mode Toggle -->
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="darkToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">🌙 Dark Mode</span>
+    </div>
+
+    <div class="container">
+        <header class="floating-header">
+            
+            <h1 class="glow-heading pulse-hover">✏️ Update Contact</h1>
+        </header>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('update_contact', id=contact.id) }}" method="POST" class="contact-form card-glow">
+    <input type="text" name="name" value="{{ contact.name }}" required placeholder="Name">
+    <input type="email" name="email" value="{{ contact.email }}" required placeholder="Email">
+    <input type="text" name="phone" value="{{ contact.phone }}" required placeholder="Phone">
+    <input type="text" name="title" value="{{ contact.title }}" placeholder="Title">
+    <select name="priority">
+        <option value="">Select Priority</option>
+        <option value="High" {% if contact.priority == 'High' %}selected{% endif %}>High</option>
+        <option value="Medium" {% if contact.priority == 'Medium' %}selected{% endif %}>Medium</option>
+        <option value="Low" {% if contact.priority == 'Low' %}selected{% endif %}>Low</option>
+    </select>
+    <div style="display: flex; gap: 10px;">
+        <button type="submit" class="pulse-button" style="width: 48%;">✅ Update</button>
+        <a href="{{ url_for('index') }}" class="export-button" style="width: 48%; text-align: center;">↩️ Cancel</a>
+    </div>
+</form>
+
+    </div>
+
+    <!-- Dark Mode Script -->
+    <script>
+        const toggle = document.getElementById('darkToggle');
+        const body = document.getElementById('main-body');
+        toggle.addEventListener('change', function () {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
