@@ -9,8 +9,8 @@ A professional **Flask-based web application** to manage personal or business co
 🔹 Add, view, edit, and delete contacts  
 🔹 Animated, responsive UI with glowing headers & styled sidebar  
 🔹 Dark mode toggle with persistent theme  
-🔹 CSV Export — one-click backup of your data  
-🔹 CSV Import — bulk upload contacts from file  
+🔹 CSV Export one-click backup of your data  
+🔹 CSV Import bulk upload contacts from file  
 🔹 Sidebar navigation to **Dashboard**, **Leads**, **Deals**, and **Accounts**  
 🔹 Styled table with priority badges and hover effects  
 🔹 Flash messages for real-time feedback  
@@ -78,7 +78,7 @@ contact-management-system/
 ![Dark Mode View](screenshots/u_dark.png)
 
 ### 📈 Dashboard Charts
-![Dashboard Charts](screenshots/dashboard.png)
+![Dashboard Charts](screenshots/Dashboard.png)
 
 ### 🌙 Dark Mode of front
 ![Dark Mode of front](screenshots/dark_mood.png)
